@@ -1,0 +1,56 @@
+William Duran
+
+<!DOCTYPE html> <!-- This is Doctype declaration -->
+<html> <!-- This is Opening HTML tag -->
+<head> <!-- This is Opening head tag -->
+    <title>Index.html</title> <!-- This is Title open/close tags -->
+    <style>
+        #meme { 
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      </style>
+</head> <!-- This is Closing head tag -->
+<body> <!-- This is Opening body tag -->
+    <h1>Taken</h1> <!-- This is Header open/close tags (h1) -->
+    <img id="meme" src="c:\Users\15053\Documents\UAT\CSC102\Taken.png" alt="A fun Meme" width="500" height="500"> <!--This is the source for the meme and I had to resize for this portion-->
+    <button id="startButton" onclick="startMoving()">Start</button>
+    <button id="stopButton" onclick="stopMoving()" disabled>Stop</button>
+
+    <script>
+      let memeInterval;
+  
+      function startMoving() {
+        disableButton('startButton');
+        enableButton('stopButton');
+        memeInterval = setInterval(moveMeme, 100);
+      }
+  
+      function stopMoving() {
+        enableButton('startButton');
+        disableButton('stopButton');
+        clearInterval(memeInterval);
+      }
+  
+      function moveMeme() {
+        const meme = document.getElementById('meme');
+        const maxX = window.innerWidth - meme.clientWidth;
+        const maxY = window.innerHeight - meme.clientHeight;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        meme.style.left = newX + 'px';
+        meme.style.top = newY + 'px';
+      }
+  
+      function disableButton(buttonId) {
+        document.getElementById(buttonId).disabled = true;
+      }
+  
+      function enableButton(buttonId) {
+        document.getElementById(buttonId).disabled = false;
+      }
+    </script>
+</body> <!-- This is Closing body tag -->
+</html> <!-- This is Closing HTML tag -->
